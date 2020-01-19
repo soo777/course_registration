@@ -41,7 +41,7 @@ public class UserController extends AbstractController{
 		
 		log.debug("@@@ user - {}", user);
 		if(pw.equals(user.getPw())) {
-			url = "viewTest";
+			url = "/view";
 		} else {
 			log.error("Invalid ID");
 			rsp = new APIResponse(false, "invalid Password", null);

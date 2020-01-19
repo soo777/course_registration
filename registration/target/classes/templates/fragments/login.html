@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  	  layout:decorate="~{layout/default}">
+  	  
+<th:block layout:fragment="content_body">
+	<div layout:fragment="content">
+		<h1>login</h1>
+		<div>
+			id
+			<input type="text" name="id">
+			password
+			<input type="password" name="pw">
+			<button id="btn_login">login</button>
+		</div>
+	</div>
+</th:block>
+
+<th:block layout:fragment="custom_js">
+	<script src="js/login.js"></script>
+</th:block>
+</html>
