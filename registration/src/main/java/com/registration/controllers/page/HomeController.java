@@ -11,8 +11,8 @@ public class HomeController {
 	@RequestMapping("/")
 //    @ResponseBody
     public String index() {
-//		return "layout/default";
-		return "fragments/login";
+//		return "fragments/login";
+		return "fragments/home";
     }
 
     @RequestMapping("/view")
