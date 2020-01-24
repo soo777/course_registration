@@ -1,9 +1,11 @@
 
 body, html {height:100%;}
 
+.box {padding:20px;}
 
 .loginDiv {text-align:center;}
-
 .profile {text-align:end; padding:10px;}
-
-
+.searchBox {width:45%; background:chocolate;}
+.listBox {width:45%; height:750px; background:aquamarine; float:left;}
+.pictureBox {height:420px; background:wheat; margin-left:49%;}
+.shoppingBox {height:290px; background:skyblue; margin-left:49%;}
