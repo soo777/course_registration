@@ -1,7 +1,13 @@
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <footer th:fragment="footerFragment"> 
+	
+	<div class="footer">
+<!-- 		footer -->
+	</div>
 
-	<script th:src="@{js/jquery.min.js}"></script>
+	<script th:src="@{js/jquery.min.js}" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script> 
+	<script th:src="@{js/semantic.min.js}"></script>
+	
 	<th:block layout:fragment="custom_js"></th:block>
 </footer>
 </html>
