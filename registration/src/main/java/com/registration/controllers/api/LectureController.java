@@ -35,21 +35,6 @@ public class LectureController extends AbstractController{
 		
 		List<Lecture> list = lectureService.getLectureList();
 		
-//		if(user == null) {
-//			log.error("Invalid ID");
-//			rsp = new APIResponse(false, "invalid ID", null);
-//			return ResponseEntity.ok(rsp);
-//		}
-//		
-//		log.debug("@@@ user - {}", user);
-//		if(pw.equals(user.getPw())) {
-//			url = "/view";
-//		} else {
-//			log.error("Invalid ID");
-//			rsp = new APIResponse(false, "invalid Password", null);
-//			return ResponseEntity.ok(rsp);
-//		}
-		
 		rsp = new APIResponse(true, "login success", list);
 		return ResponseEntity.ok(rsp);
 	}
