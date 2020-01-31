@@ -1,5 +1,6 @@
 package com.registration.controllers.api;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,14 @@ public class LectureController extends AbstractController{
 		
 		List<Lecture> list = lectureService.getLectureList();
 		
-		rsp = new APIResponse(true, "login success", list);
+		HashMap returnData = new HashMap();
+		
+		returnData.put("data", list);
+		returnData.put("draw", 1);
+		returnData.put("recordsTotal", list.size());
+		returnData.put("recordsFiltered", list.size());
+		
+		rsp = new APIResponse(true, "login success", returnData);
 		return ResponseEntity.ok(rsp);
 	}
 }
