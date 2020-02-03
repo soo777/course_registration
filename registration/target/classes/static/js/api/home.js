@@ -1,5 +1,14 @@
 $(document).ready(function(){
+//	$('select.dropdown').dropdown();
+	$('.ui.dropdown').dropdown();
 	
+	// multiple dropdown
+	$('.ui.fluid.dropdown')
+	  .dropdown({
+	    maxSelections: 2
+	  })
+	;
+	 
 //	$('#lecture_list').DataTable();
 	
     var table = $('#lecture_list').DataTable( {
@@ -38,6 +47,7 @@ $(document).ready(function(){
             { data: "professor" },
             { data: "lectureRoom" },
         ],
-    } );
-	
+    });
+		
+   
 });
