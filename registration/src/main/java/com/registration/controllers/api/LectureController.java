@@ -43,7 +43,20 @@ public class LectureController extends AbstractController{
 		returnData.put("recordsTotal", list.size());
 		returnData.put("recordsFiltered", list.size());
 		
+		rsp = new APIResponse(true, "select list success", returnData);
+		return ResponseEntity.ok(rsp);
+	}
+	
+	@PostMapping("/addCourse")
+	public ResponseEntity<APIResponse> addCourse(@RequestParam HashMap<String, Object> requestMap) {
+		
+		APIResponse rsp = null;
+		
+		HashMap returnData = new HashMap();
+		
+		
 		rsp = new APIResponse(true, "login success", returnData);
 		return ResponseEntity.ok(rsp);
 	}
+
 }

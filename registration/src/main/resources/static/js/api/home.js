@@ -6,8 +6,32 @@ $(document).ready(function(){
 	$('.ui.fluid.dropdown')
 	  .dropdown({
 	    maxSelections: 2
-	  })
-	;
+	  });
+	
+	$('#add_btn').click(function() {
+		var a = $('input[name=lecture_name]').val();
+		console.log(a);
+		var a = $('input[name=grade]').val();
+		console.log(a);
+		var a = $('input[name=personnel]').val();
+		console.log(a);
+		var a = $('select[name=lecture_time]').val();
+		console.log(a);
+		var a = $('input[name=professor]').val();
+		console.log(a);
+		var a = $('select[name=lecture_room]').val();
+		console.log(a);
+		
+		
+//		$.ajax({
+//			url: '/api/lecture/addCourse',
+//			method: 'POST',
+//			data:{
+//				
+//			}
+//		})
+		
+	});
 	 
 //	$('#lecture_list').DataTable();
 	
