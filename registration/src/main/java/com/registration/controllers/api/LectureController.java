@@ -1,5 +1,6 @@
 package com.registration.controllers.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class LectureController extends AbstractController{
 	private LectureService lectureService;
 
 	@PostMapping("/list")
-	public ResponseEntity<APIResponse> login()  {
+	public ResponseEntity<APIResponse> getList()  {
 		
 		APIResponse rsp = null;
 		String url = "";
@@ -49,8 +50,28 @@ public class LectureController extends AbstractController{
 	
 	@PostMapping("/addCourse")
 	public ResponseEntity<APIResponse> addCourse(@RequestParam HashMap<String, Object> requestMap) {
-		
 		APIResponse rsp = null;
+		
+		log.debug("@@ map - {}", requestMap);
+		log.debug("@@ map - {}", requestMap.values());
+		
+		List list = new ArrayList(requestMap.values());
+//		log.debug("@@ map - {}", list.get(3));
+		
+
+		String lectureName = (String) requestMap.get("lecture_name");
+		String grade = (String) requestMap.get("grade");
+		String personnel = (String) requestMap.get("personnel");
+		List lectureTime = (List) requestMap.get("lecture_time");
+		String professor = (String) requestMap.get("professor");
+		String lectureRoom = (String) requestMap.get("lecture_room");
+		
+		log.debug("@@ lectureName - {}", lectureName );
+		log.debug("@@ grade - {}", grade );
+		log.debug("@@ personnel- {}", personnel);
+		log.debug("@@ lectureTime- {}", lectureTime);
+		log.debug("@@ professor- {}", professor);
+		log.debug("@@ lectureRoom- {}", lectureRoom);
 		
 		HashMap returnData = new HashMap();
 		
