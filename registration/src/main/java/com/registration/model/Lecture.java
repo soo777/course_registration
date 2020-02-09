@@ -1,5 +1,8 @@
 package com.registration.model;
 
+import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,18 +12,21 @@ import javax.persistence.Table;
 
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Data
 @ToString
 @Getter
 @Entity 
 @Table(name = "tb_lecture")
-public class Lecture {
+public class Lecture implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(insertable = false, updatable = false)
 	private int no;
 	      
 	@Column(name = "lecture_name")

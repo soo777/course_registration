@@ -15,6 +15,7 @@ import com.registration.controller.AbstractController;
 import com.registration.messages.APIResponse;
 import com.registration.model.Lecture;
 import com.registration.model.User;
+import com.registration.repository.LectureRepository;
 import com.registration.services.LectureService;
 import com.registration.services.UserService;
 
@@ -28,6 +29,9 @@ public class LectureController extends AbstractController{
 	
 	@Autowired
 	private LectureService lectureService;
+	
+	@Autowired
+	private	LectureRepository lectureRepository;
 
 	@PostMapping("/list")
 	public ResponseEntity<APIResponse> getList()  {
@@ -49,20 +53,15 @@ public class LectureController extends AbstractController{
 	}
 	
 	@PostMapping("/addCourse")
-	public ResponseEntity<APIResponse> addCourse(@RequestParam HashMap<String, Object> requestMap) {
+	public ResponseEntity<APIResponse> addCourse(@RequestParam HashMap<String, Object> requestMap, @RequestParam (value="lecture_time") List lectureTime) {
 		APIResponse rsp = null;
 		
 		log.debug("@@ map - {}", requestMap);
-		log.debug("@@ map - {}", requestMap.values());
-		
-		List list = new ArrayList(requestMap.values());
-//		log.debug("@@ map - {}", list.get(3));
-		
 
 		String lectureName = (String) requestMap.get("lecture_name");
 		String grade = (String) requestMap.get("grade");
 		String personnel = (String) requestMap.get("personnel");
-		List lectureTime = (List) requestMap.get("lecture_time");
+//		List lectureTime = (List) requestMap.get("lecture_time");
 		String professor = (String) requestMap.get("professor");
 		String lectureRoom = (String) requestMap.get("lecture_room");
 		
@@ -73,10 +72,17 @@ public class LectureController extends AbstractController{
 		log.debug("@@ professor- {}", professor);
 		log.debug("@@ lectureRoom- {}", lectureRoom);
 		
-		HashMap returnData = new HashMap();
+		Lecture lecture = new Lecture();
+		lecture.setGrade(Integer.parseInt(grade));
+		lecture.setLectureName(lectureName);
+		lecture.setLectureRoom(lectureRoom);
+		lecture.setLectureTime(lectureTime.toString());
+		lecture.setPersonnel(personnel);
+		lecture.setProfessor(professor);
 		
+		lectureService.addCourse(lecture);
 		
-		rsp = new APIResponse(true, "login success", returnData);
+		rsp = new APIResponse(true, "add course success", null);
 		return ResponseEntity.ok(rsp);
 	}
 

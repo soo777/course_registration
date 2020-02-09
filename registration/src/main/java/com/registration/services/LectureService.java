@@ -20,5 +20,8 @@ public class LectureService {
 	public List<Lecture> getLectureList() {
 		return lectureRepository.findAll();
 	}
-	
+
+	public void addCourse(Lecture lecture) {
+		lectureRepository.save(lecture);
+	}
 }
