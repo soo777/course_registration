@@ -10,7 +10,7 @@ $(document).ready(function(){
 	
 	var table = $('#lecture_list').DataTable( {
         lengthChange: false,
-        pageLength: 5,
+        pageLength: 10,
         pagingType: "full_numbers",
         searching: false,
         language: {
@@ -81,6 +81,10 @@ $(document).ready(function(){
 			}
 		})
 		
+	});
+	
+	$('#add_course').click(function() {
+		$('.ui.modal').modal('show');
 	});
 	 
 //	$('#lecture_list').DataTable();
