@@ -10,7 +10,7 @@ $(document).ready(function(){
 	
 	var table = $('#lecture_list').DataTable( {
         lengthChange: false,
-        pageLength: 10,
+        pageLength: 5,
         pagingType: "full_numbers",
         searching: false,
         language: {
@@ -26,6 +26,7 @@ $(document).ready(function(){
     		url: '/api/lecture/list',
 			dataFilter: function(data) {
 	        var json = jQuery.parseJSON(data);
+	        console.log(json)
 	
 	         json.data = json.object.data;
 	         json.recordsFiltered = json.object.recordsTotal;
@@ -43,6 +44,11 @@ $(document).ready(function(){
             { data: "lectureTime" },
             { data: "professor" },
             { data: "lectureRoom" },
+            { data: null,
+            	render: function(data, row, type) {
+            		return 'add';
+            	}
+            }
         ],
     });
 	
