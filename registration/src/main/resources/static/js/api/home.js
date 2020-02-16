@@ -46,7 +46,8 @@ $(document).ready(function(){
             { data: "lectureRoom" },
             { data: null,
             	render: function(data, row, type) {
-            		return 'add';
+//            		return 'add';
+            		return '<button class="ui button" id="add_course" onclick="add_shoplist()":>Add</button>';
             	}
             }
         ],
@@ -95,5 +96,8 @@ $(document).ready(function(){
 	 
 //	$('#lecture_list').DataTable();
 	
-   
 });
+
+function add_shoplist() {
+	console.log('add shopping list')
+}
