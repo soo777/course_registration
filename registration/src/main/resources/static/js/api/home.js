@@ -47,7 +47,7 @@ $(document).ready(function(){
             { data: null,
             	render: function(data, row, type) {
 //            		return 'add';
-            		return '<button class="ui button" id="add_course" onclick="add_shoplist()":>Add</button>';
+            		return '<button class="ui button" id="add_course">Add</button>';
             	}
             }
         ],
@@ -84,7 +84,6 @@ $(document).ready(function(){
 				console.log(result);
 			},
 			complete : function() {
-				
 			}
 		})
 		
@@ -94,10 +93,29 @@ $(document).ready(function(){
 		$('.ui.modal').modal('show');
 	});
 	 
-//	$('#lecture_list').DataTable();
+	$('#lecture_list').on( 'click', 'button', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        console.log(data);
+        console.log(data.no);
+        
+        var user_id = $('.profile').text().trim();
+        console.log(user_id);
+        
+        $.ajax({
+			url: '/api/lecture/addShopList',
+			method: 'POST',
+			data:{
+				'user_id' : user_id,
+				'no' : data.no
+			},
+			traditional : true,
+			success: function(result) {
+				console.log(result);
+			},
+			complete : function() {
+			}
+		});
+    });
+	
 	
 });
-
-function add_shoplist() {
-	console.log('add shopping list')
-}

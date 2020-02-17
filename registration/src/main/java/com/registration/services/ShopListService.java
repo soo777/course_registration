@@ -14,16 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class LectureService {
-
-	@Autowired
-	private	LectureRepository lectureRepository;
+public class ShopListService {
 	
-	public List<Lecture> getLectureList() {
-		return lectureRepository.findAll();
-	}
-
-	public void addCourse(Lecture lecture) {
-		lectureRepository.save(lecture);
+	@Autowired
+	private	ShopListRepository shopRepository;
+	
+	public void addShopList(ShopList shopList) {
+		shopRepository.save(shopList);
 	}
 }
+ 
