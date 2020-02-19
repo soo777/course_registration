@@ -18,7 +18,7 @@ import com.registration.model.ShopList;
 import com.registration.model.User;
 import com.registration.repository.LectureRepository;
 import com.registration.services.LectureService;
-import com.registration.services.ShopListService;
+import com.registration.services.ShoppingService;
 import com.registration.services.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,9 +32,6 @@ public class LectureController extends AbstractController{
 	@Autowired
 	private LectureService lectureService;
 	
-	@Autowired
-	private ShopListService shopListService;
-
 	@PostMapping("/list")
 	public ResponseEntity<APIResponse> getList()  {
 		
@@ -88,23 +85,6 @@ public class LectureController extends AbstractController{
 		return ResponseEntity.ok(rsp);
 	}
 	
-	@PostMapping("/addShopList")
-	public ResponseEntity<APIResponse> addShopList(@RequestParam HashMap<String, Object> requestMap) {
-		APIResponse rsp = null;
-		
-		log.debug("@@ map - {}", requestMap);
-		
-		int no = Integer.parseInt((String) requestMap.get("no"));
-		String userId = (String) requestMap.get("user_id");
-		
-		ShopList shopList = new ShopList();
-		shopList.setNo(no);
-		shopList.setUserId(userId);
-
-		shopListService.addShopList(shopList);
-		 
-		rsp = new APIResponse(true, "add course success", null);
-		return ResponseEntity.ok(rsp);
-	}
+	
 
 }

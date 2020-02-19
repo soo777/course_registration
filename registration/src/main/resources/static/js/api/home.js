@@ -8,6 +8,8 @@ $(document).ready(function(){
 	    maxSelections: 2
 	  });
 	
+	var user_id = $('.profile').text().trim();
+	
 	var table = $('#lecture_list').DataTable( {
         lengthChange: false,
         pageLength: 5,
@@ -24,6 +26,54 @@ $(document).ready(function(){
         ajax : {
     		type:'POST',
     		url: '/api/lecture/list',
+			dataFilter: function(data) {
+	        var json = jQuery.parseJSON(data);
+	        console.log(json)
+	
+	         json.data = json.object.data;
+	         json.recordsFiltered = json.object.recordsTotal;
+	         json.recordsTotal = json.object.recordsTotal;
+	         json.draw = json.draw;
+	         
+	         return JSON.stringify(json);
+	        }
+        },
+        columns: [
+            { data: "no" },
+            { data: "lectureName" },
+            { data: "grade" },
+            { data: "personnel" },
+            { data: "lectureTime" },
+            { data: "professor" },
+            { data: "lectureRoom" },
+            { data: null,
+            	render: function(data, row, type) {
+//            		return 'add';
+            		return '<button class="ui button" id="add_course">Add</button>';
+            	}
+            }
+        ],
+    });
+	
+	var table = $('#shopping_list').DataTable( {
+        lengthChange: false,
+        pageLength: 5,
+        pagingType: "full_numbers",
+        searching: false,
+        language: {
+            "paginate": {
+                "first": "<<",
+                "previous": "<",
+                "last": ">>",
+                "next": ">"
+            }
+        },
+        ajax : {
+    		type:'POST',
+    		url: '/api/shopping/list',
+    		data: {
+    			'user_id' : user_id
+    		},
 			dataFilter: function(data) {
 	        var json = jQuery.parseJSON(data);
 	        console.log(json)
