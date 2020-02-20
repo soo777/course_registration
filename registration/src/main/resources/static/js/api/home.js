@@ -28,7 +28,7 @@ $(document).ready(function(){
     		url: '/api/lecture/list',
 			dataFilter: function(data) {
 	        var json = jQuery.parseJSON(data);
-	        console.log(json)
+//	        console.log(json)
 	
 	         json.data = json.object.data;
 	         json.recordsFiltered = json.object.recordsTotal;
@@ -55,9 +55,9 @@ $(document).ready(function(){
         ],
     });
 	
-	var table = $('#shopping_list').DataTable( {
+	var table2 = $('#shopping_list').DataTable( {
         lengthChange: false,
-        pageLength: 5,
+        pageLength: 2,
         pagingType: "full_numbers",
         searching: false,
         language: {
@@ -88,16 +88,15 @@ $(document).ready(function(){
         },
         columns: [
             { data: "no" },
-            { data: "lectureName" },
+            { data: "lecture_name" },
             { data: "grade" },
             { data: "personnel" },
-            { data: "lectureTime" },
+            { data: "lecture_time" },
             { data: "professor" },
-            { data: "lectureRoom" },
+            { data: "lecture_room" },
             { data: null,
             	render: function(data, row, type) {
-//            		return 'add';
-            		return '<button class="ui button" id="add_course">Add</button>';
+            		return '<button class="ui button" id="delete_course">Delete</button>';
             	}
             }
         ],
@@ -152,7 +151,7 @@ $(document).ready(function(){
         console.log(user_id);
         
         $.ajax({
-			url: '/api/lecture/addShopList',
+			url: '/api/shopping/addShopList',
 			method: 'POST',
 			data:{
 				'user_id' : user_id,

@@ -36,7 +36,7 @@ public class ShoppingController extends AbstractController{
 		APIResponse rsp = null;
 		String url = "";
 		 
-		List<Map<String, Object>> list = shoppingService.getShopList(userId, 2);
+		List<Map<String, Object>> list = shoppingService.getShopList(userId);
 		
 		HashMap returnData = new HashMap();
 		

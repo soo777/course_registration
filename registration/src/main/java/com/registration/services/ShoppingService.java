@@ -22,8 +22,8 @@ public class ShoppingService {
 		shopRepository.save(shopList);
 	}
 	
-	public List<Map<String, Object>> getShopList(String userId, int no) {
-		return shopRepository.getShopListByUserIdAndNo(userId, no);
+	public List<Map<String, Object>> getShopList(String userId) {
+		return shopRepository.getShopListByUserId(userId);
 	}
 }
  
