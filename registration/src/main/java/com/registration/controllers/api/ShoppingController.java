@@ -67,4 +67,23 @@ public class ShoppingController extends AbstractController{
 		rsp = new APIResponse(true, "add course success", null);
 		return ResponseEntity.ok(rsp);
 	}
+	
+	@PostMapping("/deleteShopList")
+	public ResponseEntity<APIResponse> deleteShopList(@RequestParam HashMap<String, Object> requestMap) {
+		APIResponse rsp = null;
+		
+		log.debug("@@ map - {}", requestMap);
+		
+		int no = Integer.parseInt((String) requestMap.get("no"));
+		String userId = (String) requestMap.get("user_id");
+		
+		ShopList shopList = new ShopList();
+		shopList.setNo(no);
+		shopList.setUserId(userId);
+
+		shoppingService.deleteShopList(shopList);
+		 
+		rsp = new APIResponse(true, "add course success", null);
+		return ResponseEntity.ok(rsp);
+	}
 }

@@ -1,12 +1,13 @@
 
 body, html {height:100%;}
+table tr {text-align:center;}
 
 .box {padding:20px;}
 
 .login_div {text-align:center;}
 .profile {text-align:end; padding:10px;}
-.search_box {width:47%; background:chocolate;}
-.list_box {width:47%; height:750px; background:aquamarine; float:left;}
+.search_box {width:49%; background:chocolate;}
+.list_box {width:49%; height:750px; background:aquamarine; float:left;}
 .picture_box {height:420px; background:wheat; margin-left:49%;}
 .shopping_box {height:330px; background:skyblue; margin-left:49%;}
 .add_form{padding:20px;}

@@ -144,11 +144,11 @@ $(document).ready(function(){
 	 
 	$('#lecture_list').on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        console.log(data);
-        console.log(data.no);
+//        console.log(data);
+//        console.log(data.no);
         
         var user_id = $('.profile').text().trim();
-        console.log(user_id);
+//        console.log(user_id);
         
         $.ajax({
 			url: '/api/shopping/addShopList',
@@ -159,12 +159,34 @@ $(document).ready(function(){
 			},
 			traditional : true,
 			success: function(result) {
-				console.log(result);
+				table2.ajax.reload();
 			},
 			complete : function() {
 			}
 		});
     });
 	
-	
+	$('#shopping_list').on( 'click', 'button', function () {
+        var data = table2.row( $(this).parents('tr') ).data();
+        console.log(data);
+        console.log(data.no);
+        
+        var user_id = $('.profile').text().trim();
+        console.log(user_id);
+        
+        $.ajax({
+			url: '/api/shopping/deleteShopList',
+			method: 'POST',
+			data:{
+				'user_id' : user_id,
+				'no' : data.no
+			},
+			traditional : true,
+			success: function(result) {
+				table2.ajax.reload();
+			},
+			complete : function() {
+			}
+		});
+    });
 });

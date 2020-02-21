@@ -22,6 +22,10 @@ public class ShoppingService {
 		shopRepository.save(shopList);
 	}
 	
+	public void deleteShopList(ShopList shopList) {
+		shopRepository.delete(shopList);
+	}
+	
 	public List<Map<String, Object>> getShopList(String userId) {
 		return shopRepository.getShopListByUserId(userId);
 	}
