@@ -10,9 +10,10 @@ $(document).ready(function(){
 	
 	var user_id = $('.profile').text().trim();
 	
+	// 시간표 DataTable
 	var table = $('#lecture_list').DataTable( {
         lengthChange: false,
-        pageLength: 5,
+        pageLength: 10,
         pagingType: "full_numbers",
         searching: false,
         language: {
@@ -55,8 +56,12 @@ $(document).ready(function(){
         ],
     });
 	
+	// 장바구니 DataTable
 	var table2 = $('#shopping_list').DataTable( {
         lengthChange: false,
+        oLanguage: {
+        	sEmptyTable : 'Empty Shopping List'
+        },
         pageLength: 2,
         pagingType: "full_numbers",
         searching: false,
@@ -102,6 +107,7 @@ $(document).ready(function(){
         ],
     });
 	
+	// 강의 등록 
 	$('#add_btn').click(function() {
 		var lecture_name = $('input[name=lecture_name]').val();
 		console.log(lecture_name);
@@ -131,6 +137,7 @@ $(document).ready(function(){
 			traditional : true,
 			success: function(result) {
 				console.log(result);
+				table.ajax.reload();
 			},
 			complete : function() {
 			}
@@ -142,6 +149,7 @@ $(document).ready(function(){
 		$('.ui.modal').modal('show');
 	});
 	 
+	// 장바구니에 추가 
 	$('#lecture_list').on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
 //        console.log(data);
@@ -166,6 +174,7 @@ $(document).ready(function(){
 		});
     });
 	
+	// 장바구니 목록 제거 
 	$('#shopping_list').on( 'click', 'button', function () {
         var data = table2.row( $(this).parents('tr') ).data();
         console.log(data);
