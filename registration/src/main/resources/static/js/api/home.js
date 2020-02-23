@@ -47,6 +47,7 @@ $(document).ready(function(){
             { data: "lectureTime" },
             { data: "professor" },
             { data: "lectureRoom" },
+            { data: "no" },
             { data: null,
             	render: function(data, row, type) {
 //            		return 'add';
