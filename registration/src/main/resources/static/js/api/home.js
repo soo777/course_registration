@@ -153,11 +153,25 @@ $(document).ready(function(){
 	// 장바구니에 추가 
 	$('#lecture_list').on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
-//        console.log(data);
-//        console.log(data.no);
-        
         var user_id = $('.profile').text().trim();
+        console.log(data);
+        console.log(data.lectureTime.toLowerCase());
 //        console.log(user_id);
+        
+        var arr = [];
+        arr = data.lectureTime.toLowerCase().split('/');
+        console.log(arr);
+        
+        for(var i in arr) {
+        	console.log(arr[i]);
+        	$('#' + arr[i] + '').text(arr[i]);
+        	if(i == 0) {
+    		  $('#' + arr[i] + '').attr('rowspan', arr.length);
+        	} else {
+        		$('#' + arr[i] + '').remove();
+//        		$('#' + arr[i] + '').append();
+        	}
+        }
         
         $.ajax({
 			url: '/api/shopping/addShopList',
