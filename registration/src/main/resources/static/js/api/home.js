@@ -155,8 +155,6 @@ $(document).ready(function(){
         var data = table.row( $(this).parents('tr') ).data();
         var user_id = $('.profile').text().trim();
         console.log(data);
-        console.log(data.lectureTime.toLowerCase());
-//        console.log(user_id);
         
         var arr = [];
         arr = data.lectureTime.toLowerCase().split('/');
@@ -169,8 +167,8 @@ $(document).ready(function(){
     		  $('#' + arr[i] + '').attr('rowspan', arr.length);
         	} else {
         		$('#' + arr[i] + '').remove();
-//        		$('#' + arr[i] + '').append();
         	}
+        	$('#' + arr[i] + '').attr('data', 'exist');
         }
         
         $.ajax({
@@ -192,11 +190,24 @@ $(document).ready(function(){
 	// 장바구니 목록 제거 
 	$('#shopping_list').on( 'click', 'button', function () {
         var data = table2.row( $(this).parents('tr') ).data();
-        console.log(data);
-        console.log(data.no);
+//        console.log(data);
         
         var user_id = $('.profile').text().trim();
-        console.log(user_id);
+        
+        var arr = [];
+        arr = data.lecture_time.toLowerCase().split('/');
+//        console.log(arr);
+        
+        for(var i in arr) {
+        	console.log(arr[i]);
+        	$('#' + arr[i] + '').text('');
+        	if(i == 0) {
+    		  $('#' + arr[i] + '').attr('rowspan', 1);
+        	} else {
+        		var a = arr[i].replace(/[^0-9]/g,'');	// 숫자만 추출 
+        		$('.' + a + '').append('<td id='+arr[i]+'>d</td>'); // 해당 tr에 append 
+        	}
+        }
         
         $.ajax({
 			url: '/api/shopping/deleteShopList',
