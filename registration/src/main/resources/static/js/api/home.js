@@ -82,13 +82,14 @@ $(document).ready(function(){
     		},
 			dataFilter: function(data) {
 	        var json = jQuery.parseJSON(data);
-	        console.log(json)
+//	        console.log(json)
 	
 	         json.data = json.object.data;
 	         json.recordsFiltered = json.object.recordsTotal;
 	         json.recordsTotal = json.object.recordsTotal;
 	         json.draw = json.draw;
 	         
+	         drawScheduler(json.data);
 	         return JSON.stringify(json);
 	        }
         },
@@ -160,6 +161,14 @@ $(document).ready(function(){
         arr = data.lectureTime.toLowerCase().split('/');
         console.log(arr);
         
+        // check duplication
+        for(var i in arr) {
+        	if($('#' + arr[i] + '').attr('data') == true || $('#' + arr[i] + '').length < 1) {
+        		alert('중복');
+        		return false;
+        	}
+        }
+        
         for(var i in arr) {
         	console.log(arr[i]);
         	$('#' + arr[i] + '').text(arr[i]);
@@ -168,7 +177,7 @@ $(document).ready(function(){
         	} else {
         		$('#' + arr[i] + '').remove();
         	}
-        	$('#' + arr[i] + '').attr('data', 'exist');
+        	$('#' + arr[i] + '').attr('data', true);
         }
         
         $.ajax({
@@ -205,7 +214,7 @@ $(document).ready(function(){
     		  $('#' + arr[i] + '').attr('rowspan', 1);
         	} else {
         		var a = arr[i].replace(/[^0-9]/g,'');	// 숫자만 추출 
-        		$('.' + a + '').append('<td id='+arr[i]+'>d</td>'); // 해당 tr에 append 
+        		$('.' + a + '').append('<td id='+arr[i]+'></td>'); // 해당 tr에 append 
         	}
         }
         
@@ -225,3 +234,25 @@ $(document).ready(function(){
 		});
     });
 });
+
+function drawScheduler(data) {
+	var arr = [];
+	var arr2 = [];
+	
+	for(var i in data) {
+		arr = data[i].lecture_time.toLowerCase().split('/');
+		arr2.push(arr);
+	}
+	
+    for(var i in arr2) {
+    	for(var j in arr2[i]) {
+    		$('#' + arr2[i][j] + '').text(arr2[i][j]);
+    		if(j == 0) {
+    			$('#' + arr2[i][j] + '').attr('rowspan', arr2[j].length);
+    		} else {
+    			$('#' + arr2[i][j] + '').remove();
+    		}
+    		$('#' + arr2[i][j] + '').attr('data', true);
+    	}
+    }
+}

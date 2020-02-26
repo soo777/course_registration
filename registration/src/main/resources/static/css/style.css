@@ -5,6 +5,7 @@ table tr {text-align:center;}
 .box {padding:20px;}
 
 .table01{width:100%;}
+.table02 td:not(:first-child){width:18%; word-break:break-all; table-layout:fixed;}
 .login_div {text-align:center;}
 .profile {text-align:end; padding:10px;}
 .search_box {width:49%; background:chocolate;}
