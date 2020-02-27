@@ -3,6 +3,7 @@ package com.registration.controllers.api;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,20 @@ public class LectureController extends AbstractController{
 	
 	@Autowired
 	private LectureService lectureService;
+	
+	@PostMapping("/listNew")
+	public ResponseEntity<APIResponse> getList(@RequestParam Map<String, Object> requestMap)  {
+		
+		APIResponse rsp = null;
+		String url = "";
+		
+		HashMap<String, Object> returnData = new HashMap<>();
+		
+		Map<String, Object> map = lectureService.getLectureList(requestMap, returnData);
+		
+		rsp = new APIResponse(true, "select list success", returnData);
+		return ResponseEntity.ok(rsp);
+	}
 	
 	@PostMapping("/list")
 	public ResponseEntity<APIResponse> getList()  {

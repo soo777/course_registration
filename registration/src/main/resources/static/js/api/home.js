@@ -27,17 +27,19 @@ $(document).ready(function(){
         ajax : {
     		type:'POST',
     		url: '/api/lecture/list',
+    		data: {
+            },
 			dataFilter: function(data) {
 	        var json = jQuery.parseJSON(data);
-//	        console.log(json)
 	
-	         json.data = json.object.data;
-	         json.recordsFiltered = json.object.recordsTotal;
-	         json.recordsTotal = json.object.recordsTotal;
-	         json.draw = json.draw;
-	         
-	         return JSON.stringify(json);
-	        }
+	        json.data = json.object.data;
+	        json.recordsFiltered = json.object.recordsTotal;
+	        json.recordsTotal = json.object.recordsTotal;
+	        json.draw = json.draw;
+		 
+	        console.log(json);
+	        return JSON.stringify(json);
+			}
         },
         columns: [
             { data: "no" },
@@ -148,7 +150,7 @@ $(document).ready(function(){
 	});
 	
 	$('#add_course').click(function() {
-		$('.ui.modal').modal('show');
+		$('#add_modal').modal('show');
 	});
 	 
 	// 장바구니에 추가 
@@ -164,14 +166,14 @@ $(document).ready(function(){
         // check duplication
         for(var i in arr) {
         	if($('#' + arr[i] + '').attr('data') == true || $('#' + arr[i] + '').length < 1) {
-        		alert('중복');
+        		$('#alert_modal').modal('show');
         		return false;
         	}
         }
         
         for(var i in arr) {
         	console.log(arr[i]);
-        	$('#' + arr[i] + '').text(arr[i]);
+        	$('#' + arr[i] + '').text(data.lectureName);
         	if(i == 0) {
     		  $('#' + arr[i] + '').attr('rowspan', arr.length);
         	} else {
@@ -246,7 +248,7 @@ function drawScheduler(data) {
 	
     for(var i in arr2) {
     	for(var j in arr2[i]) {
-    		$('#' + arr2[i][j] + '').text(arr2[i][j]);
+    		$('#' + arr2[i][j] + '').text(data[i].lecture_name);
     		if(j == 0) {
     			$('#' + arr2[i][j] + '').attr('rowspan', arr2[j].length);
     		} else {
