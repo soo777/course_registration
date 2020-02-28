@@ -11,6 +11,7 @@ import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.registration.model.Lecture;
 import com.registration.model.ShopList;
@@ -29,18 +30,39 @@ public class LectureService {
 	private	LectureRepository lectureRepository;
 	
 	public Map<String, Object> getLectureList(Map<String, Object> requestMap, Map<String, Object> returnData) {
+		log.debug("@@ map - {}", requestMap);
 		//# 페이징 데이터
 		int draw = Integer.parseInt(requestMap.get("draw").toString());
 		int start = Integer.parseInt(requestMap.get("start").toString());
 		int length = Integer.parseInt(requestMap.get("length").toString());
 		
+		String searchLecture = requestMap.get("columns[0][search][value]").toString();
+		
+		log.debug("searchLecture:{}", searchLecture);
+		
+		ArrayList<String> whereStrArr = new ArrayList<String>();
+		
+//		String sqlQ = "SELECT SQL_CALC_FOUND_ROWS TOT.* " +
+//				" FROM ( " +  
+//				" SELECT * FROM scheduler.tb_lecture " +
+//				" ) AS TOT";
 		String sqlQ = "SELECT SQL_CALC_FOUND_ROWS TOT.* " +
 				" FROM ( " +  
-				" SELECT wlt.user_id, wlt.alias, wlt.wlt_tp, wlt.blc, wlt.reg_dt, wlt.mod_dt from tb_wallet wlt" +
-				" ) AS TOT";
+				" SELECT * FROM scheduler.tb_lecture ";
+		
+		if (!StringUtils.isEmpty(searchLecture))
+			whereStrArr.add(" lecture_name = '" + searchLecture + "'");
+
+
+		if (whereStrArr.size() > 0)
+			sqlQ += " WHERE " + String.join(" AND ", whereStrArr);
+		
+		sqlQ +=		" ) AS TOT";
 		
 		//# LIMIT 절
 		sqlQ += " LIMIT " + start + "," + length + ";";
+		
+		log.debug("@@ sql - {}", sqlQ);
 		
 		List<Map<String, Object>> convData = new ArrayList<>();
 		
@@ -55,12 +77,13 @@ public class LectureService {
 			//# 데이터 가공
 			for (Object[] arr : data) {
 				Map<String, Object> item = new HashMap<>();
-				item.put("user_id", arr[0] == null ? "-" : arr[0]);
-				item.put("alias", arr[1] == null ? "-" : arr[1]);
-				item.put("wlt_tp", arr[2] == null ? "-" : arr[2]);
-				item.put("blc", arr[3] == null ? "-" : arr[3]);
-				item.put("reg_dt", arr[4] == null ? "-" : arr[4]);
-				item.put("mod_dt", arr[5] == null ? "-" : arr[5]);
+				item.put("no", arr[0] == null ? "-" : arr[0]);
+				item.put("lectureName", arr[1] == null ? "-" : arr[1]);
+				item.put("grade", arr[2] == null ? "-" : arr[2]);
+				item.put("personnel", arr[3] == null ? "-" : arr[3]);
+				item.put("lectureTime", arr[4] == null ? "-" : arr[4]);
+				item.put("professor", arr[5] == null ? "-" : arr[5]);
+				item.put("lectureRoom", arr[6] == null ? "-" : arr[6]);
 				convData.add(item);
 			}
 

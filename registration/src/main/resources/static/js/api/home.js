@@ -3,10 +3,20 @@ $(document).ready(function(){
 	$('.ui.dropdown').dropdown();
 
 	// multiple dropdown
-	$('.ui.fluid.dropdown')
-	  .dropdown({
+	$('.ui.fluid.dropdown').dropdown({
 	    maxSelections: 2
 	  });
+	
+	$('#search_btn').click(function() {
+		var dt = table;
+		
+		var lecture_val = $('#lecture_val').val();
+//        var mSearch01 = lecture_val;
+        
+        if (typeof lecture_val != 'undefined') {dt.column(0).search(lecture_val);}
+//        dt.column(0).search(lecture_val);
+        dt.draw();
+	});
 	
 	var user_id = $('.profile').text().trim();
 	
@@ -15,7 +25,9 @@ $(document).ready(function(){
         lengthChange: false,
         pageLength: 10,
         pagingType: "full_numbers",
-        searching: false,
+        searching: true,
+        processing: true,
+        serverSide: true,
         language: {
             "paginate": {
                 "first": "<<",
@@ -26,7 +38,7 @@ $(document).ready(function(){
         },
         ajax : {
     		type:'POST',
-    		url: '/api/lecture/list',
+    		url: '/api/lecture/listNew',
     		data: {
             },
 			dataFilter: function(data) {
@@ -52,7 +64,6 @@ $(document).ready(function(){
             { data: "no" },
             { data: null,
             	render: function(data, row, type) {
-//            		return 'add';
             		return '<button class="ui button" id="add_course">Add</button>';
             	}
             }

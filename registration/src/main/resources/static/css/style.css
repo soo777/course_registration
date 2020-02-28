@@ -13,3 +13,4 @@ table tr {text-align:center;}
 .picture_box {height:420px; background:wheat; margin-left:49%;}
 .shopping_box {height:330px; background:skyblue; margin-left:49%;}
 .add_form{padding:20px;}
+#lecture_list_filter{display:none;}
