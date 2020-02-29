@@ -49,7 +49,6 @@ $(document).ready(function(){
 	        json.recordsTotal = json.object.recordsTotal;
 	        json.draw = json.draw;
 		 
-	        console.log(json);
 	        return JSON.stringify(json);
 			}
         },
@@ -122,6 +121,59 @@ $(document).ready(function(){
         ],
     });
 	
+	$('form').form({
+        on: 'blur',
+        keyboardShortcuts: false,
+        fields: {
+        	lecture_name: {
+                identifier: 'lecture_name',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please enter a value'
+                }]
+            },
+            grade: {
+                identifier: 'grade',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please select a dropdown value'
+                }]
+            },
+            personnel: {
+            	identifier: 'personnel',
+            	rules: [{
+            		type: 'empty',
+            		prompt: 'Please select a dropdown value'
+            	}]
+            },
+            lecture_time: {
+            	identifier: 'lecture_time',
+            	rules: [{
+            		type: 'empty',
+            		prompt: 'Please select a dropdown value'
+            	}]
+            },
+            professor: {
+            	identifier: 'professor',
+            	rules: [{
+            		type: 'empty',
+            		prompt: 'Please select a dropdown value'
+            	}]
+            },
+            lecture_room: {
+            	identifier: 'lecture_room',
+            	rules: [{
+            		type: 'empty',
+            		prompt: 'Please select a dropdown value'
+            	}]
+            }
+        },
+        onSuccess:function() {
+        	add_course();
+        }
+    });
+	
+	
 	// 강의 등록 
 	$('#add_btn').click(function() {
 		var lecture_name = $('input[name=lecture_name]').val();
@@ -137,26 +189,30 @@ $(document).ready(function(){
 		var lecture_room = $('select[name=lecture_room]').val();
 		console.log(lecture_room);
 		
+//		$("#form").submit();
 		
-		$.ajax({
-			url: '/api/lecture/addCourse',
-			method: 'POST',
-			data:{
-				'lecture_name' : lecture_name,
-				'grade' : grade,
-				'personnel' : personnel,
-				'lecture_time' : lecture_time,
-				'professor' : professor,
-				'lecture_room' : lecture_room
-			},
-			traditional : true,
-			success: function(result) {
-				console.log(result);
-				table.ajax.reload();
-			},
-			complete : function() {
-			}
-		})
+		return false;
+//		
+//		
+//		$.ajax({
+//			url: '/api/lecture/addCourse',
+//			method: 'POST',
+//			data:{
+//				'lecture_name' : lecture_name,
+//				'grade' : grade,
+//				'personnel' : personnel,
+//				'lecture_time' : lecture_time,
+//				'professor' : professor,
+//				'lecture_room' : lecture_room
+//			},
+//			traditional : true,
+//			success: function(result) {
+//				console.log(result);
+//				table.ajax.reload();
+//			},
+//			complete : function() {
+//			}
+//		})
 		
 	});
 	
@@ -268,4 +324,39 @@ function drawScheduler(data) {
     		$('#' + arr2[i][j] + '').attr('data', true);
     	}
     }
+}
+
+function add_course() {
+	var lecture_name = $('input[name=lecture_name]').val();
+	console.log(lecture_name);
+	var grade = $('select[name=grade]').val();
+	console.log(grade);
+	var personnel = $('input[name=personnel]').val();
+	console.log(personnel);
+	var lecture_time = $('select[name=lecture_time]').val();
+	console.log(lecture_time);
+	var professor = $('input[name=professor]').val();
+	console.log(professor);
+	var lecture_room = $('select[name=lecture_room]').val();
+	console.log(lecture_room);
+	
+	$.ajax({
+		url: '/api/lecture/addCourse',
+		method: 'POST',
+		data:{
+			'lecture_name' : lecture_name,
+			'grade' : grade,
+			'personnel' : personnel,
+			'lecture_time' : lecture_time,
+			'professor' : professor,
+			'lecture_room' : lecture_room
+		},
+		traditional : true,
+		success: function(result) {
+			console.log(result);
+			table.ajax.reload();
+		},
+		complete : function() {
+		}
+	})
 }

@@ -195,81 +195,140 @@
 	  	<div class="header">
 	    	Add Course
 	  	</div>
-
-	  	<div>	
-			<form class="ui form add_form">
-			  <div class="field">
-			    <label>Lecture Name</label>
-			    <input type="text" name="lecture_name" placeholder="Lecture Name">
-			  </div>
-			  <div class="field">
-			      <label>Grade</label>
-			      <div class="ui selection dropdown">
-			          <input type="hidden" name="grade">
-			          <i class="dropdown icon"></i>
-			          <div class="default text">Grade</div>
-			          <div class="menu">
-			              <div class="item" data-value="2">2</div>
-			              <div class="item" data-value="3">3</div>
-			          </div>
-			      </div>
-			  </div>
-			  <div class="field">
-			    <label>Personnel</label>
-			    <div class="ui selection dropdown">
-			          <input type="hidden" name="personnel">
-			          <i class="dropdown icon"></i>
-			          <div class="default text">personnel</div>
-			          <div class="menu">
-			              <div class="item" data-value="40">40</div>
-			              <div class="item" data-value="60">60</div>
-			              <div class="item" data-value="120">120</div>
-			          </div>
+	  	
+	  	
+	  	<div class="ui form">
+		    <form>
+		    	<div class="field"> 
+			    	<label>Lecture Name</label>
+			    	<input type="text" name="lecture_name" placeholder="Lecture Name">
 			    </div>
-			  </div>
-			  <div class="field">
+			    <div class="field">
+		            <label>Grade</label>
+		            <select class="ui dropdown" name="grade">
+		                <option value="">Grade</option>
+		                <option value="2">2</option>
+		                <option value="3">3</option>
+		            </select>
+		        </div>
+			    <div class="field">
+		            <label>Personnel</label>
+		            <select class="ui dropdown" name="personnel">
+		                <option value="">Personnel</option>
+		                <option value="40">40</option>
+		                <option value="60">60</option>
+		                <option value="120">120</option>
+		            </select>
+		        </div>
+		        <div class="field"> 
 			    <label>Lecture Time</label>
-			    <select class="ui fluid search dropdown" multiple="" name='lecture_time'>
-			    	<option value="MA">Mon 9</option>
-			    	<option value="MB">Mon 10</option>
-			    	<option value="MC">Mon 11</option>
-			    	<option value="MD">Mon 12</option>
-			    	<option value="ME">Mon 13</option>
-			    </select>
-			  </div>
-			  <div class="field">
-			    <label>Professor</label>
-			    <input type="text" name="professor" placeholder="Professor">
-			  </div>
-			  <div class="field">
-			    <label>Lecture Room</label>
-			    <select class="ui fluid search dropdown" name="lecture_room">
-			    	<option value="101">Room 101</option>
-			    	<option value="102">Room 102</option>
-			    	<option value="103">Room 103</option>
-			    	<option value="104">Room 104</option>
-			    	<option value="201">Room 201</option>
-			    	<option value="202">Room 202</option>
-			    	<option value="203">Room 203</option>
-			    	<option value="301">Room 301</option>
-			    	<option value="302">Room 302</option>
-			    	<option value="303">Room 303</option>
-			    	<option value="304">Room 304</option>
-			    </select>
-	<!-- 				    <input type="text" name="last-name" placeholder="Lecture Room"> -->
-	  		  </div>
-			</form>
+				    <select class="ui fluid search dropdown" multiple="" name='lecture_time'>
+				    	<option value="MA">Mon 9</option>
+				    	<option value="MB">Mon 10</option>
+				    	<option value="MC">Mon 11</option>
+				    	<option value="MD">Mon 12</option>
+				    	<option value="ME">Mon 13</option>
+				    </select>
+			    </div>
+			    <div class="field">
+				    <label>Professor</label>
+				    <input type="text" name="professor" placeholder="Professor">
+			    </div>
+		        <div class="field"> 
+				    <label>Lecture Room</label>
+				    <select class="ui fluid search dropdown" name="lecture_room">
+				   		<option value="">Room</option>
+				    	<option value="101">Room 101</option>
+				    	<option value="102">Room 102</option>
+				    	<option value="103">Room 103</option>
+				    	<option value="104">Room 104</option>
+				    	<option value="201">Room 201</option>
+				    	<option value="202">Room 202</option>
+				    	<option value="203">Room 203</option>
+				    	<option value="301">Room 301</option>
+				    	<option value="302">Room 302</option>
+				    	<option value="303">Room 303</option>
+				    	<option value="304">Room 304</option>
+				    </select>
+	  		    </div>
+		        <div class="ui submit button">Submit</div>
+		        <div class="ui error message"></div>
+		    </form>
 		</div>
 
-	  	<div class="actions">
-		    <div class="ui positive right labeled icon button" id="add_btn">
-		      Add
-		      <i class="checkmark icon"></i>
-		    </div>
-		    <div class="ui black deny button">
-		      Cancel
-		    </div>
-	  	</div>
+<!-- 	  	<div class="ui form"> -->
+<!-- <!-- 	  	<form class="ui form add_form" id="form">	 --> 
+<!-- 			<form> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Lecture Name</label> -->
+<!-- 			    <input type="text" name="lecture_name" placeholder="Lecture Name"> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			      <label>Grade</label> -->
+<!-- 			      <div class="ui selection dropdown"> -->
+<!-- 			          <input type="hidden" name="grade"> -->
+<!-- 			          <i class="dropdown icon"></i> -->
+<!-- 			          <div class="default text">Grade</div> -->
+<!-- 			          <div class="menu"> -->
+<!-- 			              <div class="item" data-value="2">2</div> -->
+<!-- 			              <div class="item" data-value="3">3</div> -->
+<!-- 			          </div> -->
+<!-- 			      </div> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Personnel</label> -->
+<!-- 			    <div class="ui selection dropdown"> -->
+<!-- 			          <input type="hidden" name="personnel"> -->
+<!-- 			          <i class="dropdown icon"></i> -->
+<!-- 			          <div class="default text">personnel</div> -->
+<!-- 			          <div class="menu"> -->
+<!-- 			              <div class="item" data-value="40">40</div> -->
+<!-- 			              <div class="item" data-value="60">60</div> -->
+<!-- 			              <div class="item" data-value="120">120</div> -->
+<!-- 			          </div> -->
+<!-- 			    </div> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Lecture Time</label> -->
+<!-- 			    <select class="ui fluid search dropdown" multiple="" name='lecture_time'> -->
+<!-- 			    	<option value="MA">Mon 9</option> -->
+<!-- 			    	<option value="MB">Mon 10</option> -->
+<!-- 			    	<option value="MC">Mon 11</option> -->
+<!-- 			    	<option value="MD">Mon 12</option> -->
+<!-- 			    	<option value="ME">Mon 13</option> -->
+<!-- 			    </select> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Professor</label> -->
+<!-- 			    <input type="text" name="professor" placeholder="Professor"> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Lecture Room</label> -->
+<!-- 			    <select class="ui fluid search dropdown" name="lecture_room"> -->
+<!-- 			    	<option value="101">Room 101</option> -->
+<!-- 			    	<option value="102">Room 102</option> -->
+<!-- 			    	<option value="103">Room 103</option> -->
+<!-- 			    	<option value="104">Room 104</option> -->
+<!-- 			    	<option value="201">Room 201</option> -->
+<!-- 			    	<option value="202">Room 202</option> -->
+<!-- 			    	<option value="203">Room 203</option> -->
+<!-- 			    	<option value="301">Room 301</option> -->
+<!-- 			    	<option value="302">Room 302</option> -->
+<!-- 			    	<option value="303">Room 303</option> -->
+<!-- 			    	<option value="304">Room 304</option> -->
+<!-- 			    </select> -->
+<!-- 	  		  </div> -->
+<!-- 			</form> -->
+<!-- 		</div> -->
+<!-- 	  	<div class="actions"> -->
+<!-- 		    <div class="ui submit positive right labeled icon button" id="add_btn"> -->
+<!-- 		      Add -->
+<!-- 		      <i class="checkmark icon"></i> -->
+<!-- 		    </div> -->
+<!-- 		    <div class="ui black deny button"> -->
+<!-- 		      Cancel -->
+<!-- 		    </div> -->
+<!-- 	  	</div> -->
 	</div>
 	
 	<div class="ui mini modal" id="alert_modal">
