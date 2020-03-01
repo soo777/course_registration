@@ -10,7 +10,12 @@ public class HomeController {
 	
 	@RequestMapping("/")
     public String index() {
-//		return "fragments/login";
+		return "fragments/login";
+//		return "fragments/home";
+    }
+	
+	@RequestMapping("/home")
+    public String home() {
 		return "fragments/home";
     }
 

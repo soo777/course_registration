@@ -5,16 +5,29 @@
   	  layout:decorate="~{layout/default}">
   	  
 <th:block layout:fragment="content_body">
-	<div class="login_div">
-		<h1>login</h1>
-		<div>
-			id
-			<input type="text" name="id">
-			password
-			<input type="password" name="pw">
-			<button id="btn_login">login</button>
-		</div>
-	</div>
+<!-- 	<div class="login_div"> -->
+<!-- 		<h1>login</h1> -->
+<!-- 		<div> -->
+<!-- 			id -->
+<!-- 			<input type="text" name="id"> -->
+<!-- 			password -->
+<!-- 			<input type="password" name="pw"> -->
+<!-- 			<button id="btn_login">login</button> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+
+	<form class="ui form login">
+		  <h1>Login</h1>
+		  <div class="field">
+		    <label>ID</label>
+		    <input type="text" name="id" placeholder="ID">
+		  </div>
+		  <div class="field">
+		    <label>Password</label>
+		    <input type="text" name="pw" placeholder="Password">
+		  </div>
+		  <button class="ui button" type="submit">Login</button>
+	</form>	
 </th:block>
 
 <th:block layout:fragment="custom_js">

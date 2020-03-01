@@ -1,5 +1,7 @@
 
 body, html {height:100%;}
+/* body{background-image:url(/image/main.jpg;) !important} */
+.background{height:100%; background-image:url(/image/main.jpg;) !important}
 table tr {text-align:center;}
 
 .box {padding:20px;}
@@ -15,3 +17,6 @@ table tr {text-align:center;}
 .add_form{padding:20px;}
 #lecture_list_filter{display:none;}
 .form{padding:20px;}
+.login.form{width:20%; margin:15% 0 0 40%;}
+.login.form .button{width:100%;}
+.login.form h1{text-align:center;}
