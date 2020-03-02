@@ -1,7 +1,11 @@
 package com.registration.controllers.api;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +28,7 @@ public class UserController extends AbstractController{
 	private UserService userService;
 
 	@PostMapping("/login")
-	public ResponseEntity<APIResponse> login(@RequestParam(value = "id") String userId, @RequestParam(value = "pw") String pw)  {
+	public ResponseEntity<APIResponse> login(Model model, HttpSession session, @RequestParam(value = "id") String userId, @RequestParam(value = "pw") String pw)  {
 		
 		APIResponse rsp = null;
 		String url = "";
@@ -47,6 +51,8 @@ public class UserController extends AbstractController{
 			rsp = new APIResponse(false, "invalid Password", null);
 			return ResponseEntity.ok(rsp);
 		}
+		
+		session.setAttribute("userId", userId);
 		
 		rsp = new APIResponse(true, "login success", url);
 		return ResponseEntity.ok(rsp);
