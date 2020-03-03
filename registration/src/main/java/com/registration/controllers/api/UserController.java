@@ -52,7 +52,10 @@ public class UserController extends AbstractController{
 			return ResponseEntity.ok(rsp);
 		}
 		
+		int role = userService.getUserRole(userId);
+		
 		session.setAttribute("userId", userId);
+		session.setAttribute("role", role);
 		
 		rsp = new APIResponse(true, "login success", url);
 		return ResponseEntity.ok(rsp);

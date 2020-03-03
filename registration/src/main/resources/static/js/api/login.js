@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	
 	$('#btn_login').click(function() {
 		
 		var id = $('input[name=id]').val();
@@ -40,10 +39,13 @@ $(document).ready(function(){
 				console.log(result);
 				if(result.status == true) {
 					alert('login success');
+//					$('.mini.modal').modal('show');
 					location.href = result.object;
 				} else {
 					alert(result.message);
 				}
+			},
+			complete:function(){
 			}
 		});
 	})

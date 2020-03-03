@@ -18,8 +18,10 @@ public class HomeController {
 	
 	@RequestMapping("/home")
     public String home(Model model, HttpSession session) {
-		String userId = session.getAttribute("userId").toString();
+		String userId = (String) session.getAttribute("userId");
+		int role = (int) session.getAttribute("role");
 		model.addAttribute("userId", userId);
+		model.addAttribute("role", role);
 		return "fragments/home";
     }
 
