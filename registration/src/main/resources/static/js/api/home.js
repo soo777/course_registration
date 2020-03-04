@@ -277,13 +277,19 @@ $(document).ready(function(){
 //        console.log(arr);
         
         for(var i in arr) {
-        	console.log(arr[i]);
+//        	console.log(arr[i]);
         	$('#' + arr[i] + '').text('');
         	if(i == 0) {
     		  $('#' + arr[i] + '').attr('rowspan', 1);
         	} else {
-        		var a = arr[i].replace(/[^0-9]/g,'');	// 숫자만 추출 
-        		$('.' + a + '').append('<td id='+arr[i]+'></td>'); // 해당 tr에 append 
+        		var time = arr[i].replace(/[^0-9]/g,'');	// 숫자만 추출 
+        		var day = arr[i].replace(time,'');
+        		
+        		console.log(arr[i]);
+        		
+        		appendDay(day, time);
+        		
+//        		$('.' + a + '').append('<td id='+arr[i]+'></td>'); // 해당 tr에 append 
         	}
         }
         
@@ -359,4 +365,31 @@ function add_course() {
 		complete : function() {
 		}
 	})
+}
+
+function appendDay(day, time) {
+	console.log(day);
+	console.log(time);
+	
+	var arr = ['m'+time, 't'+time, 'w'+time, 'th'+time, 'f'+time];
+	
+	var index = arr.indexOf(day+time);
+	console.log('index : ' + index);
+	
+	for(var i=index-1; i >= 0; i--) {
+		console.log(arr[i]);
+		if($('#' + arr[i] + '').length > 0) {
+			console.log('a');
+			$('#' + arr[i] + '').after('<td id='+day+time+'></td>');
+			break;
+		} 
+	}
+	console.log('bbbb');
+	console.log(arr[index]);
+	
+	// for문으로 뒤에꺼 있는지 판별해서 넣어야함 앞에넣는거랑 비슷한방식
+	$('#' + arr[index+1] + '').before('<td id='+day+time+'></td>'); // 해당 tr에 append 
+	
+	console.log(arr);
+	
 }

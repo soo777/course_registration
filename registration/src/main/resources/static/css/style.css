@@ -12,13 +12,20 @@ table tr {text-align:center;}
 .table02 td:not(:first-child){width:18%; word-break:break-all; table-layout:fixed;}
 .login_div {text-align:center;}
 .profile {font-size:20px; color:white; margin-right:20px; text-align:end; padding:10px;}
-.search_box {width:49%; background:chocolate;}
-.list_box {width:49%; height:750px; background:aquamarine; float:left;}
-.picture_box {height:420px; background:wheat; margin-left:49%;}
-.shopping_box {height:330px; background:skyblue; margin-left:49%;}
+
 .add_form{padding:20px;}
 #lecture_list_filter{display:none;}
 .form{padding:20px;}
 .login.form{width:20%; margin:15% 0 0 40%;}
 .login.form .button{width:100%;}
 .login.form h1{text-align:center;}
+
+
+/* .search_box {width:49%; background:chocolate;} */
+/* .list_box {width:49%; height:750px; background:aquamarine; float:left;} */
+/* .picture_box {height:420px; background:wheat; margin-left:49%;} */
+/* .shopping_box {height:330px; background:skyblue; margin-left:49%;} */
+.search_box {width:49%;}
+.list_box {width:49%; height:750px; float:left;}
+.picture_box {height:420px; margin-left:49%;}
+.shopping_box {height:330px; margin-left:49%;}
