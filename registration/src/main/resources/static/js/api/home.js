@@ -230,9 +230,10 @@ $(document).ready(function(){
         arr = data.lectureTime.toLowerCase().split('/');
         console.log(arr);
         
-        // check duplication
+//         check duplication
         for(var i in arr) {
-        	if($('#' + arr[i] + '').attr('data') == true || $('#' + arr[i] + '').length < 1) {
+        	if($('#' + arr[i] + '').attr('data') == 'true' || $('#' + arr[i] + '').length < 1) {
+        		console.log(arr[i]);
         		$('#alert_modal').modal('show');
         		return false;
         	}
@@ -268,16 +269,12 @@ $(document).ready(function(){
 	// 장바구니 목록 제거 
 	$('#shopping_list').on( 'click', 'button', function () {
         var data = table2.row( $(this).parents('tr') ).data();
-//        console.log(data);
-        
         var user_id = $('.profile').text().trim();
         
         var arr = [];
         arr = data.lecture_time.toLowerCase().split('/');
-//        console.log(arr);
         
         for(var i in arr) {
-//        	console.log(arr[i]);
         	$('#' + arr[i] + '').text('');
         	if(i == 0) {
     		  $('#' + arr[i] + '').attr('rowspan', 1);
@@ -285,11 +282,8 @@ $(document).ready(function(){
         		var time = arr[i].replace(/[^0-9]/g,'');	// 숫자만 추출 
         		var day = arr[i].replace(time,'');
         		
-        		console.log(arr[i]);
-        		
         		appendDay(day, time);
-        		
-//        		$('.' + a + '').append('<td id='+arr[i]+'></td>'); // 해당 tr에 append 
+//        		$('.' + time + '').append('<td id='+arr[i]+'></td>'); // 해당 tr에 append 
         	}
         }
         
@@ -368,9 +362,6 @@ function add_course() {
 }
 
 function appendDay(day, time) {
-	console.log(day);
-	console.log(time);
-	
 	var arr = ['m'+time, 't'+time, 'w'+time, 'th'+time, 'f'+time];
 	
 	var index = arr.indexOf(day+time);
@@ -379,16 +370,22 @@ function appendDay(day, time) {
 	for(var i=index-1; i >= 0; i--) {
 		console.log(arr[i]);
 		if($('#' + arr[i] + '').length > 0) {
-			console.log('a');
+			console.log(arr[i]);
 			$('#' + arr[i] + '').after('<td id='+day+time+'></td>');
-			break;
+			return false;
 		} 
 	}
-	console.log('bbbb');
-	console.log(arr[index]);
 	
 	// for문으로 뒤에꺼 있는지 판별해서 넣어야함 앞에넣는거랑 비슷한방식
-	$('#' + arr[index+1] + '').before('<td id='+day+time+'></td>'); // 해당 tr에 append 
+	for(var i=index+1; i <= arr.length; i++) {
+		console.log(arr[i]);
+		if($('#' + arr[i] + '').length > 0) {
+			console.log('a');
+			$('#' + arr[i] + '').before('<td id='+day+time+'></td>');   
+			return false;
+		} 
+	}
+	$('.' + time + '').append('<td id='+day+time+'></td>'); // 하나 밖에 없을때 
 	
 	console.log(arr);
 	
