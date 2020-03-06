@@ -23,7 +23,7 @@ $(document).ready(function(){
 	// 시간표 DataTable
 	var table = $('#lecture_list').DataTable( {
         lengthChange: false,
-        pageLength: 10,
+        pageLength: 18,
         pagingType: "full_numbers",
         searching: true,
         processing: true,
@@ -75,7 +75,7 @@ $(document).ready(function(){
         oLanguage: {
         	sEmptyTable : 'Empty Shopping List'
         },
-        pageLength: 2,
+        pageLength: 6,
         pagingType: "full_numbers",
         searching: false,
         language: {
@@ -232,7 +232,7 @@ $(document).ready(function(){
         
 //         check duplication
         for(var i in arr) {
-        	if($('#' + arr[i] + '').attr('data') == 'true' || $('#' + arr[i] + '').length < 1) {
+        	if($('#' + arr[i] + '').attr('rowspan') > '2' || $('#' + arr[i] + '').length < 1) {
         		console.log(arr[i]);
         		$('#alert_modal').modal('show');
         		return false;
