@@ -7,5 +7,7 @@ import com.registration.model.Lecture;
 
 @Repository
 public interface LectureRepository extends JpaRepository<Lecture, Integer> {
+	
+	Lecture findByNo(int no);
 
 }

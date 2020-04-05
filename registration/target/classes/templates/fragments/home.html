@@ -5,65 +5,175 @@
 	layout:decorate="~{layout/default}">
 
 <th:block layout:fragment="content_body">
-<!-- 	<div class="profile">admin</div> -->
-
+	<div class="profile" th:text="${userId}"></div>
+	
 	<div class="page_content box">
-		<div class="search_box box">search</div>
-
+		<div class="search_box box">
+			<div class="ui input">
+			  <input type="text" id="lecture_val">
+			</div>
+			<button class="ui button" id="search_btn">
+			  Search
+			</button>
+			<button class="ui button" id="add_course" th:if="${role == 0}">Add</button>
+		</div>
+		
 		<div class="list_box box">
-			List
-			<button class="ui button" id="add_course">Add</button>
+<!-- 			List <span th:text="${role}"></span> -->
+<!-- 			<button class="ui button" id="add_course" th:if="${role == 0}">Add</button> -->
 			<div>	
-				<table id="lecture_list" class="ui celled padded table center aligned">
+				<table id="lecture_list" class="ui celled padded table01 center aligned">
 					<colgroup>
+	                    <col width="3%"/>
+	                    <col width="15%"/>
 	                    <col width="5%"/>
+	                    <col width="5%"/>
+	                    <col width="15%"/>
+	                    <col width="10%"/>
+	                    <col width="5%"/>
+	                    <col width="5%"/>
+	                    <col width="5%"/>
+                    </colgroup>
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Lecture</th>
+							<th>Grade</th>
+							<th>Personnel</th>
+							<th>Lecture Time</th>
+							<th>Professor</th>
+							<th>Room</th>
+							<th>Remain</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="picture_box box">
+<!-- 			picture -->
+			<table class="ui definition celled table table02">
+				  <colgroup>
+                    <col width="10%"/>
+                    <col width="18%"/>
+                    <col width="18%"/>
+                    <col width="18%"/>
+                    <col width="18%"/>
+                    <col width="18%"/>
+                  </colgroup>
+				  <thead>
+				    <tr>
+				    	<th></th>
+					    <th>Mon</th>
+					    <th>Tue</th>
+					    <th>Wed</th>
+					    <th>Thu</th>
+					    <th>Fri</th>
+				 	</tr>
+				  </thead>
+				  <tbody>
+				    <tr class="9">
+				      <td>9</td>
+<!-- 				      <td id="mon9" rowspan="2" style="width:18%; word-break:break-all; table-layout:fixed;">asdfasdfasdfaaasdfasdasdfasfasdfsdf</td> -->
+				      <td id="m9" style="width:18%; word-break:break-all; table-layout:fixed;"></td>
+				      <td id="t9"></td>
+				      <td id="w9"></td>
+				      <td id="th9"></td>
+				      <td id="f9"></td>
+				    </tr>
+				    <tr class="10">
+				      <td>10</td>
+				      <td id="m10"></td>
+				      <td id="t10"></td>
+				      <td id="w10"></td>
+				      <td id="th10"></td>
+				      <td id="f10"></td>
+				    </tr>
+				    <tr class="11">
+				      <td>11</td>
+				      <td id="m11"></td>
+				      <td id="t11"></td>
+				      <td id="w11"></td>
+				      <td id="th11"></td>
+				      <td id="f11"></td>
+				    </tr>
+				    <tr class="12">
+				      <td>12</td>
+				      <td id="m12"></td>
+				      <td id="t12"></td>
+				      <td id="w12"></td>
+				      <td id="th12"></td>
+				      <td id="f12"></td>
+				    </tr>
+				    <tr class="13">
+				      <td>13</td>
+				      <td id="m13"></td>
+				      <td id="t13"></td>
+				      <td id="w13"></td>
+				      <td id="t13"></td>
+				      <td id="f13"></td>
+				    </tr>
+				    <tr class="14">
+				      <td>14</td>
+				      <td id="m14"></td>
+				      <td id="t14"></td>
+				      <td id="w14"></td>
+				      <td id="th14"></td>
+				      <td id="f14"></td>
+				    </tr>
+				    <tr class="15">
+				      <td>15</td>
+				      <td id="m15"></td>
+				      <td id="t15"></td>
+				      <td id="w15"></td>
+				      <td id="th15"></td>
+				      <td id="f15"></td>
+				    </tr>
+				    <tr>
+				      <td>16</td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td>17</td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				    <tr>
+				      <td>18</td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				      <td></td>
+				    </tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="shopping_box box">
+<!-- 			shopping list -->
+			<div>
+				<table id="shopping_list" class="ui celled table01">
+				  <colgroup>
+	                    <col width="3%"/>
 	                    <col width="15%"/>
 	                    <col width="5%"/>
 	                    <col width="10%"/>
 	                    <col width="25%"/>
 	                    <col width="10%"/>
 	                    <col width="15%"/>
-	                    <col width="15%"/>
-                    </colgroup>
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>Lecture Name</th>
-							<th>Grade</th>
-							<th>Personnel</th>
-							<th>Lecture Time</th>
-							<th>Professor</th>
-							<th>Lecture Room</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-<!-- 					<tfoot> -->
-<!-- 						<tr> -->
-<!-- 							<th colspan="7"> -->
-<!-- 								<div class="ui right floated pagination menu"> -->
-<!-- 									<a class="icon item"> <i class="left chevron icon"></i> -->
-<!-- 									</a> <a class="item">1</a> <a class="item">2</a> <a class="item">3</a> -->
-<!-- 									<a class="item">4</a> <a class="icon item"> <i -->
-<!-- 										class="right chevron icon"></i> -->
-<!-- 									</a> -->
-<!-- 								</div> -->
-<!-- 							</th> -->
-<!-- 						</tr> -->
-<!-- 					</tfoot> -->
-				</table>
-			</div>
-		</div>
-
-		<div class="picture_box box">
-			picture
-		</div>
-
-		<div class="shopping_box box">
-			shopping list
-			<div>
-				<table class="ui celled table">
+	                    <col width="5%"/>
+                  </colgroup>
 				  <thead>
 				    <tr>
 						<th>No</th>
@@ -73,122 +183,167 @@
 						<th>Lecture Time</th>
 						<th>Professor</th>
 						<th>Lecture Room</th>
+						<th></th>
 					</tr>
 				  </thead>
-				  <tbody>
-				    <tr>
-				      <td data-label="Name">James</td>
-				      <td data-label="Age">24</td>
-				      <td data-label="Job">Engineer</td>
-				      <td data-label="Job">Engineer</td>
-				      <td data-label="Job">Engineer</td>
-				      <td data-label="Job">Engineer</td>
-				      <td data-label="Job">Engineer</td>
-				    </tr>
-				    <tr>
-				      <td data-label="Name">Jill</td>
-				      <td data-label="Name">Jill</td>
-				      <td data-label="Name">Jill</td>
-				      <td data-label="Name">Jill</td>
-				      <td data-label="Age">26</td>
-				      <td data-label="Age">26</td>
-				      <td data-label="Job">Engineer</td>
-				    </tr>
-				    <tr>
-				      <td data-label="Name">Elyse</td>
-				      <td data-label="Name">Elyse</td>
-				      <td data-label="Name">Elyse</td>
-				      <td data-label="Name">Elyse</td>
-				      <td data-label="Name">Elyse</td>
-				      <td data-label="Age">24</td>
-				      <td data-label="Job">Designer</td>
-				    </tr>
-				  </tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 	
-	<div class="ui modal">
-	  	<i class="close icon"></i>
+<!-- 	add modal -->
+	<div class="ui modal" id="add_modal">
 	  	<div class="header">
 	    	Add Course
 	  	</div>
-
-	  	<div>	
-			<form class="ui form add_form">
-			  <div class="field">
-			    <label>Lecture Name</label>
-			    <input type="text" name="lecture_name" placeholder="Lecture Name">
-			  </div>
-			  <div class="field">
-			      <label>Grade</label>
-			      <div class="ui selection dropdown">
-			          <input type="hidden" name="grade">
-			          <i class="dropdown icon"></i>
-			          <div class="default text">Grade</div>
-			          <div class="menu">
-			              <div class="item" data-value="2">2</div>
-			              <div class="item" data-value="3">3</div>
-			          </div>
-			      </div>
-			  </div>
-			  <div class="field">
-			    <label>Personnel</label>
-			    <div class="ui selection dropdown">
-			          <input type="hidden" name="personnel">
-			          <i class="dropdown icon"></i>
-			          <div class="default text">personnel</div>
-			          <div class="menu">
-			              <div class="item" data-value="40">40</div>
-			              <div class="item" data-value="60">60</div>
-			              <div class="item" data-value="120">120</div>
-			          </div>
+	  	
+	  	
+	  	<div class="ui form">
+		    <form>
+		    	<div class="field"> 
+			    	<label>Lecture Name</label>
+			    	<input type="text" name="lecture_name" placeholder="Lecture Name">
 			    </div>
-			  </div>
-			  <div class="field">
+			    <div class="field">
+		            <label>Grade</label>
+		            <select class="ui dropdown" name="grade">
+		                <option value="">Grade</option>
+		                <option value="2">2</option>
+		                <option value="3">3</option>
+		            </select>
+		        </div>
+			    <div class="field">
+		            <label>Personnel</label>
+		            <select class="ui dropdown" name="personnel">
+		                <option value="">Personnel</option>
+		                <option value="40">40</option>
+		                <option value="60">60</option>
+		                <option value="120">120</option>
+		            </select>
+		        </div>
+		        <div class="field"> 
 			    <label>Lecture Time</label>
-			    <select class="ui fluid search dropdown" multiple="" name='lecture_time'>
-			    	<option value="MA">Mon A</option>
-			    	<option value="MB">Mon B</option>
-			    	<option value="MC">Mon C</option>
-			    	<option value="MD">Mon D</option>
-			    	<option value="ME">Mon E</option>
-			    </select>
-			  </div>
-			  <div class="field">
-			    <label>Professor</label>
-			    <input type="text" name="professor" placeholder="Professor">
-			  </div>
-			  <div class="field">
-			    <label>Lecture Room</label>
-			    <select class="ui fluid search dropdown" name="lecture_room">
-			    	<option value="101">Room 101</option>
-			    	<option value="102">Room 102</option>
-			    	<option value="103">Room 103</option>
-			    	<option value="104">Room 104</option>
-			    	<option value="201">Room 201</option>
-			    	<option value="202">Room 202</option>
-			    	<option value="203">Room 203</option>
-			    	<option value="301">Room 301</option>
-			    	<option value="302">Room 302</option>
-			    	<option value="303">Room 303</option>
-			    	<option value="304">Room 304</option>
-			    </select>
-	<!-- 				    <input type="text" name="last-name" placeholder="Lecture Room"> -->
-	  		  </div>
-			</form>
+				    <select class="ui fluid search dropdown" multiple="" name='lecture_time'>
+				    	<option value="MA">Mon 9</option>
+				    	<option value="MB">Mon 10</option>
+				    	<option value="MC">Mon 11</option>
+				    	<option value="MD">Mon 12</option>
+				    	<option value="ME">Mon 13</option>
+				    </select>
+			    </div>
+			    <div class="field">
+				    <label>Professor</label>
+				    <input type="text" name="professor" placeholder="Professor">
+			    </div>
+		        <div class="field"> 
+				    <label>Lecture Room</label>
+				    <select class="ui fluid search dropdown" name="lecture_room">
+				   		<option value="">Room</option>
+				    	<option value="101">Room 101</option>
+				    	<option value="102">Room 102</option>
+				    	<option value="103">Room 103</option>
+				    	<option value="104">Room 104</option>
+				    	<option value="201">Room 201</option>
+				    	<option value="202">Room 202</option>
+				    	<option value="203">Room 203</option>
+				    	<option value="301">Room 301</option>
+				    	<option value="302">Room 302</option>
+				    	<option value="303">Room 303</option>
+				    	<option value="304">Room 304</option>
+				    </select>
+	  		    </div>
+		        <div class="ui submit button">Submit</div>
+		        <div class="ui error message"></div>
+		    </form>
 		</div>
 
-	  	<div class="actions">
-		    <div class="ui positive right labeled icon button">
-		      Add
-		      <i class="checkmark icon"></i>
-		    </div>
-		    <div class="ui black deny button">
-		      Cancel
-		    </div>
-	  	</div>
+<!-- 	  	<div class="ui form"> -->
+<!-- <!-- 	  	<form class="ui form add_form" id="form">	 --> 
+<!-- 			<form> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Lecture Name</label> -->
+<!-- 			    <input type="text" name="lecture_name" placeholder="Lecture Name"> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			      <label>Grade</label> -->
+<!-- 			      <div class="ui selection dropdown"> -->
+<!-- 			          <input type="hidden" name="grade"> -->
+<!-- 			          <i class="dropdown icon"></i> -->
+<!-- 			          <div class="default text">Grade</div> -->
+<!-- 			          <div class="menu"> -->
+<!-- 			              <div class="item" data-value="2">2</div> -->
+<!-- 			              <div class="item" data-value="3">3</div> -->
+<!-- 			          </div> -->
+<!-- 			      </div> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Personnel</label> -->
+<!-- 			    <div class="ui selection dropdown"> -->
+<!-- 			          <input type="hidden" name="personnel"> -->
+<!-- 			          <i class="dropdown icon"></i> -->
+<!-- 			          <div class="default text">personnel</div> -->
+<!-- 			          <div class="menu"> -->
+<!-- 			              <div class="item" data-value="40">40</div> -->
+<!-- 			              <div class="item" data-value="60">60</div> -->
+<!-- 			              <div class="item" data-value="120">120</div> -->
+<!-- 			          </div> -->
+<!-- 			    </div> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Lecture Time</label> -->
+<!-- 			    <select class="ui fluid search dropdown" multiple="" name='lecture_time'> -->
+<!-- 			    	<option value="MA">Mon 9</option> -->
+<!-- 			    	<option value="MB">Mon 10</option> -->
+<!-- 			    	<option value="MC">Mon 11</option> -->
+<!-- 			    	<option value="MD">Mon 12</option> -->
+<!-- 			    	<option value="ME">Mon 13</option> -->
+<!-- 			    </select> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Professor</label> -->
+<!-- 			    <input type="text" name="professor" placeholder="Professor"> -->
+<!-- 			  </div> -->
+<!-- 			  <div class="field"> -->
+<!-- 			    <label>Lecture Room</label> -->
+<!-- 			    <select class="ui fluid search dropdown" name="lecture_room"> -->
+<!-- 			    	<option value="101">Room 101</option> -->
+<!-- 			    	<option value="102">Room 102</option> -->
+<!-- 			    	<option value="103">Room 103</option> -->
+<!-- 			    	<option value="104">Room 104</option> -->
+<!-- 			    	<option value="201">Room 201</option> -->
+<!-- 			    	<option value="202">Room 202</option> -->
+<!-- 			    	<option value="203">Room 203</option> -->
+<!-- 			    	<option value="301">Room 301</option> -->
+<!-- 			    	<option value="302">Room 302</option> -->
+<!-- 			    	<option value="303">Room 303</option> -->
+<!-- 			    	<option value="304">Room 304</option> -->
+<!-- 			    </select> -->
+<!-- 	  		  </div> -->
+<!-- 			</form> -->
+<!-- 		</div> -->
+<!-- 	  	<div class="actions"> -->
+<!-- 		    <div class="ui submit positive right labeled icon button" id="add_btn"> -->
+<!-- 		      Add -->
+<!-- 		      <i class="checkmark icon"></i> -->
+<!-- 		    </div> -->
+<!-- 		    <div class="ui black deny button"> -->
+<!-- 		      Cancel -->
+<!-- 		    </div> -->
+<!-- 	  	</div> -->
+	</div>
+	
+	<div class="ui mini modal" id="alert_modal">
+	  <div class="header">
+	    Info
+	  </div>
+	  <div class="content">
+	  	<p style="font-size:16px;">course is duplicated</p>
+	  </div>
+	  <div class="actions">
+	    <div class="ui positive icon button">
+	      OK
+	    </div>
+	  </div>
 	</div>
 
 </th:block>

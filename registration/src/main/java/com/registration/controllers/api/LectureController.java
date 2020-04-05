@@ -66,6 +66,37 @@ public class LectureController extends AbstractController{
 		return ResponseEntity.ok(rsp);
 	}
 	
+	@PostMapping("/deleteCourse")
+	public ResponseEntity<APIResponse> deleteCourse(@RequestParam(value="no") int no)  {
+		
+		log.debug("@@@ no {}", no);
+		
+		APIResponse rsp = null;
+		
+		Lecture lecture = lectureService.getLecture(no);
+		log.debug("@@ lecture - {}", lecture);
+		
+		if(lecture == null) {
+			rsp = new APIResponse(false, "Not found lecture", null);
+			return ResponseEntity.ok(rsp);
+		}
+		
+		// deleteLecture
+		lectureService.deleteCourse(no);
+		
+		List<Lecture> list = lectureService.getLectureList();
+		
+		HashMap returnData = new HashMap();
+		
+		returnData.put("data", list);
+		returnData.put("draw", 1);
+		returnData.put("recordsTotal", list.size());
+		returnData.put("recordsFiltered", list.size());
+		
+		rsp = new APIResponse(true, "delete success", returnData);
+		return ResponseEntity.ok(rsp);
+	}
+	
 	@PostMapping("/addCourse")
 	public ResponseEntity<APIResponse> addCourse(@RequestParam HashMap<String, Object> requestMap, @RequestParam (value="lecture_time") List lectureTime) {
 		APIResponse rsp = null;

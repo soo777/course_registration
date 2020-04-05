@@ -108,4 +108,13 @@ public class LectureService {
 	public void addCourse(Lecture lecture) {
 		lectureRepository.save(lecture);
 	}
+	
+	public void deleteCourse(int no) {
+		lectureRepository.deleteById(no);
+	}
+	
+	public Lecture getLecture(int no) {
+		Lecture lecture = lectureRepository.findByNo(no);
+		return lecture;
+	}
 }
